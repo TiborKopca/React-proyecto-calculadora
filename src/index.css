@@ -1,12 +1,42 @@
+/* *********************************** */
+/* *** GENERALAL STYLES *** */
+/* *********************************** */
+
+/* Typography */
+@font-face {
+  font-family: "Lato-bold";
+  src: url("./font/lato-bold-webfont.woff2") format("woff2"),
+    url("./font/lato-bold-webfont.woff") format("woff");
+}
+
 :root {
-  --background-color-light:#F5F6F7;
-  --background-color-dark:#1B1B32;
-  --background-color-dark-alt:rgb(24 107 112);
-  --text-color-light:rgb(245, 246, 247);
-  --text-color-dark:rgb(27, 27, 50);
+  /* ******************************** */
+  /* COLORS */
+  /* ******************************** */
+  --color-bg-primary: rgb(38, 38, 38);
+  --color-bg-primary-gradient: rgb(141, 141, 141);
+  --color-bg-secondary: rgb(221, 221, 221);
+  --color-bg-secondary-gradient: rgb(183 183 183);
+  --color-bg-calculator: rgb(83, 83, 83);
+  /* --color-key-primary: #b1b1b1; */
+  --color-key-primary: rgb(201 201 201);
+  --color-key-secondary: rgb(223, 223, 223);
+  --color-key-active: #d4d4d4;
+  --color-key-operator: #888888;
+  --color-result-text: #0a0a0a;
+  --color-bg-result: #f1f0f0;
+  --color-text-white: #f7f7f7;
+
+  /* OLD */
+  --background-color-light: #f5f6f7;
+  --background-color-dark: #1b1b32;
+  --background-color-dark-alt: rgb(24 107 112);
+  --text-color-light: rgb(245, 246, 247);
+  --text-color-dark: rgb(27, 27, 50);
   --shadow-color-black: rgb(0, 0, 0);
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: Lato-bold, Helvetica, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -14,8 +44,8 @@
   color: var(--text-color-light);
   background: radial-gradient(
     circle,
-    var(--background-color-dark-alt)10%,
-    var(--background-color-dark) 100%
+    var(--color-bg-primary-gradient) 10%,
+    var(--color-bg-primary) 100%
   );
 
   font-synthesis: none;
@@ -23,57 +53,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/*
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-*/
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--background-color-dark);
     /* background-color: var(--background-color-light); */
     background: radial-gradient(
-    circle,
-    rgb(85, 230, 240) 10%,
-    rgb(16, 46, 51) 100%
-  );
+      circle,
+      var(--color-bg-secondary-gradient) 10%,
+      var(--color-bg-primary-gradient) 100%
+    );
   }
   a:hover {
     color: #747bff;
@@ -81,4 +70,4 @@ button:focus-visible {
   button {
     background-color: var(--background-color-light);
   }
-} 
+}
