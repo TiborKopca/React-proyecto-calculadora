@@ -6,15 +6,54 @@ import Button from "./components/Button";
 import ButtonClear from "./components/ButtonClear";
 import Screen from "./components/Screen";
 import Logo from "./components/Logo";
+import { evaluate } from "mathjs";
 
 function App() {
+  const [input, setInput] = useState("");
+  //SCREEN SIZE CONSTANT
   const SCREEN_SIZE = 10;
-  const [input, setInput] = useState('');
-  const handleInputValue = val => {
-    if(input.length < SCREEN_SIZE){
-    setInput(input + val);
+
+  //NUMBER & OPERATOR KEYS HANDLER
+  const handleInputValue = (val) => {
+    if (input.length < SCREEN_SIZE) {
+      const operators = ["-", "+", "/", "*", "%"];
+      //IF THE LAST CHAR IS AN OPERATOR AND THE NEW VALUE ALSO IS AN OPERATOR, REPLACE THE LAST
+      const lastChar = input[input.length - 1];
+
+      //IF THE LAST CHAR IS AN OPERATOR AND THE NEW VALUE ALSO IS AN OPERATOR, REPLACE THE LAST
+      if (operators.includes(lastChar) && operators.includes(val)) {
+        //REPLACE THE LAST OPERATOR
+        setInput(input.slice(0, -1) + val);
+      } else {
+        //ADD THE NEW VALUE IF NO REPETITION OF OPERATORS
+        setInput(input + val);
+      }
     }
   };
+
+  //CALCULATE HANDLER
+  //Calculate and display the result, limited to SCREEN_SIZE
+  const calculateResult = () => {
+    try {
+      if (input) {
+        const result = evaluate(input).toString();
+        setInput(
+          result.length > SCREEN_SIZE ? result.slice(0, SCREEN_SIZE) : result
+        );
+      } else {
+        setInput("n/a");
+      }
+    } catch (error) {
+      setInput("Error"); // Show error if expression is invalid
+    }
+  };
+
+  //CLEAR KEY HANDLER
+  const clearHandler = () => {
+    setInput("");
+  };
+
+  //TODO: IMPLEMENT MEMORY KEYS HANDLER
 
   return (
     <div className="app">
@@ -28,70 +67,92 @@ function App() {
         <div className="grid__container" id="container">
           <Screen handleInput={input} />
 
-          <Button isMemory grid="grid-mc" id="btnMc">
+          <Button memory={"memory cleared"} isMemory grid="grid-mc" id="btnMc">
             Mc
           </Button>
-          <Button isMemory grid="grid-mplus" id="btnMplus">
+          <Button
+            memory={"memory stored"}
+            isMemory
+            grid="grid-mplus"
+            id="btnMplus"
+          >
             M+
           </Button>
           <ButtonClear
             grid="grid-ac"
             id="btnAC"
-            handleClear={() => setInput("")}
+            handleClear={() => clearHandler()}
           >
             AC
           </ButtonClear>
 
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-1" id="btn1">
-            1
-          </Button>
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-2" id="btn2">
-            2
-          </Button>
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-3" id="btn3">
-            3
-          </Button>
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-4" id="btn4">
-            4
-          </Button>
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-5" id="btn5">
-            5
-          </Button>
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-6" id="btn6">
-            6
-          </Button>
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-7" id="btn7">
-            7
-          </Button>
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-8" id="btn8">
-            8
-          </Button>
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-9" id="btn9">
-            9
-          </Button>
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-0" id="btn0">
-            0
-          </Button>
-          <Button funcOnClick ={handleInputValue} isGeneral grid="grid-decimal" id="btnDecimal">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
+            <Button
+              key={num}
+              funcOnClick={handleInputValue}
+              isGeneral
+              grid={`grid-${num}`}
+              id={`btn${num}`}
+            >
+              {num}
+            </Button>
+          ))}
+
+          <Button
+            funcOnClick={handleInputValue}
+            isGeneral
+            grid="grid-decimal"
+            id="btnDecimal"
+          >
             .
           </Button>
 
-          <Button isOperator grid="grid-percent" id="btnPercent">
+          <Button
+            funcOnClick={handleInputValue}
+            isOperator
+            grid="grid-percent"
+            id="btnPercent"
+          >
             %
           </Button>
-          <Button isOperator grid="grid-subtract" id="btnSubtract">
+          <Button
+            funcOnClick={handleInputValue}
+            isOperator
+            grid="grid-subtract"
+            id="btnSubtract"
+          >
             -
           </Button>
-          <Button isOperator grid="grid-divide" id="btnDivide">
+          <Button
+            funcOnClick={handleInputValue}
+            isOperator
+            grid="grid-divide"
+            id="btnDivide"
+          >
             /
           </Button>
-          <Button isOperator grid="grid-add" id="btnAdd">
+          <Button
+            funcOnClick={handleInputValue}
+            isOperator
+            grid="grid-add"
+            id="btnAdd"
+          >
             +
           </Button>
-          <Button isOperator grid="grid-multiply" id="btnMultiply">
-            x
+          <Button
+            funcOnClick={handleInputValue}
+            isOperator
+            grid="grid-multiply"
+            id="btnMultiply"
+          >
+            *
           </Button>
-          <Button isOperator grid="grid-equals" id="btnEquals">
+          <Button
+            funcOnClick={calculateResult}
+            isOperator
+            grid="grid-equals"
+            id="btnEquals"
+          >
             =
           </Button>
         </div>

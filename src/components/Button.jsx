@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/Button.css";
 
-function Button({ grid, isGeneral, isMemory, isOperator, id, children, funcOnClick }) {
+function Button({ grid, isGeneral, isMemory, isOperator, id, children, funcOnClick, memory}) {
   //CRITERIA FOR isMemory
   //   const isMemory = (value) => {
   //     return isNaN(value) && value != "." && value != "=" && value != "Ac";
@@ -18,6 +18,11 @@ function Button({ grid, isGeneral, isMemory, isOperator, id, children, funcOnCli
   const gridPosition = (value) => {
     return value;
   }
+  const memoryHandler = (memory) => {
+    // console.log(memory);
+    return console.log(memory);
+  }
+
   // Define conditional classes based on props
   const buttonClasses = 
   `container__btn `
@@ -29,7 +34,7 @@ function Button({ grid, isGeneral, isMemory, isOperator, id, children, funcOnCli
   return    <button 
                 className={buttonClasses} 
                 id={id}
-                onClick={() => funcOnClick(children)}
+                onClick={() => memory ? memoryHandler(memory) : funcOnClick(children)}
                 >
                 {children}
             </button>;

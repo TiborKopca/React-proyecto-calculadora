@@ -7,6 +7,10 @@
 - Typography(imported, woff2 format) : Lato-bold
 - Uses prefered color scheme for dark and light mode defined by user system
 - FLEXBOX GRID
+- math operations imported from [mathjs 13.2.0](http://mathjs.org)
+- number keys rendered from array using map function
+- limitation to the screen size from input and from results set to 10characters
+
 <!-- - fully responsive
 - button 1 : add + 1
 - button 2 : reset
