@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/Button.css";
 
-function Button({ grid, isGeneral, isMemory, isOperator, id, children }) {
+function Button({ grid, isGeneral, isMemory, isOperator, id, children, funcOnClick }) {
   //CRITERIA FOR isMemory
   //   const isMemory = (value) => {
   //     return isNaN(value) && value != "." && value != "=" && value != "Ac";
@@ -26,7 +26,13 @@ function Button({ grid, isGeneral, isMemory, isOperator, id, children }) {
   +`${isOperator ? "btn__operator " : ""}`
   +`${gridPosition(grid)}`.trimEnd();
 
-  return <button className={buttonClasses} id={id}>{children}</button>;
+  return    <button 
+                className={buttonClasses} 
+                id={id}
+                onClick={() => funcOnClick(children)}
+                >
+                {children}
+            </button>;
 }
 
 export default Button;

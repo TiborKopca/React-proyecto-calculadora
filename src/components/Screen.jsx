@@ -1,9 +1,9 @@
 import React from "react";
-import "../css/Button.css";
+import "../css/Screen.css";
 
-const Screen = ({ input }) => (
+const Screen = ({ handleInput }) => (
  <div className="grid__result" id='input_result'>
-    { input }
+    { handleInput }
  </div>   
 );
 

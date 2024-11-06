@@ -19,8 +19,8 @@
 
 
 ## Screenshots
-![desktop](./src/img/screenshot.png)
-![mobile](./src/img/screenshot_mobile.png)
+![desktop](./src/img/screenshot/screenshot1.png)
+![desktop](./src/img/screenshot/screenshot2.png)
 
 ## Author
 [@TiborKopca](https://github.com/TiborKopca)

@@ -26,14 +26,14 @@
   --color-result-text: #0a0a0a;
   --color-bg-result: #f1f0f0;
   --color-text-white: #f7f7f7;
+  --shadow-color-black: rgb(0, 0, 0);
 
   /* OLD */
-  --background-color-light: #f5f6f7;
-  --background-color-dark: #1b1b32;
-  --background-color-dark-alt: rgb(24 107 112);
-  --text-color-light: rgb(245, 246, 247);
-  --text-color-dark: rgb(27, 27, 50);
-  --shadow-color-black: rgb(0, 0, 0);
+  /* --background-color-light: #f5f6f7; */
+  /* --background-color-dark: #1b1b32; */
+  /* --background-color-dark-alt: rgb(24 107 112); */
+  /* --text-color-light: rgb(245, 246, 247); */
+  /* --text-color-dark: rgb(27, 27, 50); */
 
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   font-family: Lato-bold, Helvetica, sans-serif;
