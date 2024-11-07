@@ -11,11 +11,6 @@
 - number keys rendered from array using map function
 - limitation to the screen size from input and from results set to 10characters
 
-<!-- - fully responsive
-- button 1 : add + 1
-- button 2 : reset
-- counter : number of clicks
-- animated transitios between old value and new value -->
 
 ## Online Link
 <!-- [github Pages Link](https://tiborkopca.github.io/Javascript2024-DeusExMachina-SmartphoneCalculator/) -->
